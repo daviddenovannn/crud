@@ -3,6 +3,7 @@
 include("connection.php");
 
 $query = mysqli_query($connect, "SELECT * FROM indoternak");
+//dsni koneknya dengan nama tabel nya 
 $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 // print_r($results);
