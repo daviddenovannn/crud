@@ -2,8 +2,8 @@
 
 include("connection.php");
 
-$query = mysqli_query($connect, "SELECT * FROM indoternak");
-//dsni koneknya dengan nama tabel nya 
+$search = $_GET['search'];
+$query = mysqli_query($connect, "SELECT * FROM indoternak WHERE nama='$search' OR alamat='$search' OR umur='$search' OR jenis_kelamin='$search'");
 $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 // print_r($results);
@@ -15,7 +15,7 @@ $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <a href="add.php">Masukan Data</a> <br><br>
 
     <form action="search.php" method="GET">
-        <input type=text name="search" placeholder="Cari .." value="" />
+        <input type=text name="search" placeholder="Cari .." value="<?php echo $_GET['search'] ?>" />
         <button type="submit">Cari</button>
     </form>
     <table border="1">
